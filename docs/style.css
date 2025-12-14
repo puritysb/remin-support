@@ -29,6 +29,9 @@ body {
     background-color: var(--bg-start);
     overflow-x: hidden;
     line-height: 1.6;
+    word-break: keep-all;
+    /* Prevent Korean words from breaking mid-word */
+    -webkit-font-smoothing: antialiased;
 }
 
 /* Background Gradients */
@@ -50,9 +53,11 @@ body {
     right: -10%;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(255, 154, 118, 0.2), transparent 70%);
+    background: radial-gradient(circle, rgba(255, 154, 118, 0.15), transparent 70%);
+    /* Reduced opacity for subtlety */
     border-radius: 50%;
     animation: drift 20s infinite alternate ease-in-out;
+    pointer-events: none;
 }
 
 @keyframes drift {
@@ -154,14 +159,16 @@ body {
 
 .text-group h1 {
     font-family: var(--font-heading);
-    font-size: 4rem;
-    line-height: 1.1;
+    font-size: 3.2rem;
+    /* Reduced from 4rem for conciseness */
+    line-height: 1.2;
     font-weight: 800;
     margin-bottom: 24px;
     background: linear-gradient(to bottom right, #ffffff, #ffe0d5);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    letter-spacing: -1px;
 }
 
 .subtitle {
@@ -456,7 +463,8 @@ footer {
     }
 
     .text-group h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        /* Reduced from 2.5rem */
     }
 
     .subtitle {
