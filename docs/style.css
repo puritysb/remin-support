@@ -226,21 +226,12 @@ body {
     position: relative;
 }
 
-.screen-content .map-preview {
+/* App Video in Mockup */
+.app-video {
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, #1a1a2e, #16213e);
-    position: relative;
-}
-
-.path-line {
-    position: absolute;
-    top: 20%;
-    left: 20%;
-    width: 60%;
-    height: 50%;
-    border-left: 3px dashed var(--primary);
-    transform: rotate(-10deg);
+    object-fit: cover;
+    display: block;
 }
 
 /* Features Section */
@@ -285,6 +276,26 @@ body {
 .feature-card:hover {
     transform: translateY(-5px);
     background: rgba(255, 255, 255, 0.08);
+}
+
+/* Feature Visual (Screenshots) */
+.feature-visual {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.feature-visual img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-visual img {
+    transform: scale(1.05);
 }
 
 .feature-card .icon {

@@ -10,7 +10,9 @@
     <meta name="description" content="AI가 당신의 여행 사진을 아름다운 시네마틱 영상으로 만들어줍니다. 멈춰 있던 추억을 다시 걸어보세요.">
     <meta property="og:title" content="Remin">
     <meta property="og:description" content="AI 기반 여행 큐레이션 & 시네마틱 메모리 플라이트">
-    <meta property="og:image" content="https://puritysb.github.io/remin-support/app-icon.png">
+    <meta property="og:image" content="https://puritysb.github.io/remin-support/og-image.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://puritysb.github.io/remin-support/">
 
     <!-- Cloud/Server Icon or App Icon -->
     <link rel="icon" type="image/png" href="app-icon.png">
@@ -70,15 +72,10 @@
                 <div class="iphone-mockup">
                     <div class="notch"></div>
                     <div class="screen">
-                        <!-- 실제 앱 스크린샷이 들어갈 자리 (임시 그라데이션) -->
-                        <div class="screen-content">
-                            <div class="map-preview">
-                                <div class="path-line"></div>
-                                <div class="photo-marker p1"></div>
-                                <div class="photo-marker p2"></div>
-                                <div class="photo-marker p3"></div>
-                            </div>
-                        </div>
+                        <!-- 실제 앱 미리보기 비디오 -->
+                        <video autoplay loop muted playsinline class="app-video">
+                            <source src="videos/app-preview.mp4" type="video/mp4">
+                        </video>
                     </div>
                 </div>
             </div>
@@ -94,21 +91,33 @@
 
             <div class="feature-grid">
                 <div class="feature-card glass">
+                    <div class="feature-visual">
+                        <img src="screenshots/feature-ai.png" alt="AI 큐레이션" loading="lazy">
+                    </div>
                     <div class="icon">✨</div>
                     <h3>AI 큐레이션</h3>
                     <p>수백 장의 사진 중 '베스트 컷'만 골라<br>의미 있는 주제별로 묶어줍니다.</p>
                 </div>
                 <div class="feature-card glass">
+                    <div class="feature-visual">
+                        <img src="screenshots/feature-flight.png" alt="시네마틱 플라이트" loading="lazy">
+                    </div>
                     <div class="icon">🎥</div>
                     <h3>시네마틱 플라이트</h3>
                     <p>여행 경로를 따라 지도 위를 비행하는<br>3D 영상을 자동으로 만들어보세요.</p>
                 </div>
                 <div class="feature-card glass">
+                    <div class="feature-visual">
+                        <img src="screenshots/feature-discovery.png" alt="우연한 재발견" loading="lazy">
+                    </div>
                     <div class="icon">💫</div>
                     <h3>우연한 재발견</h3>
                     <p>잊고 있던 순간을 우연히 다시 마주해요.<br>AI가 숨겨진 추억을 꺼내줍니다.</p>
                 </div>
                 <div class="feature-card glass">
+                    <div class="feature-visual">
+                        <img src="screenshots/feature-privacy.png" alt="완벽한 프라이버시" loading="lazy">
+                    </div>
                     <div class="icon">🔒</div>
                     <h3>완벽한 프라이버시</h3>
                     <p>모든 분석은 기기 내에서만.<br>직접 공유하지 않는 한, 어디로도 전송되지 않아요.</p>
