@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remin - 旅の思い出を写真で振り返る</title>
+
+    <!-- SEO & Open Graph -->
+    <meta name="description" content="AIがあなたの旅行写真を美しいシネマティック動画に変換します。思い出をもう一度歩いてみましょう。">
+    <meta property="og:title" content="Remin">
+    <meta property="og:description" content="AI搭載の旅行キュレーション＆シネマティックメモリーフライト">
+    <meta property="og:image" content="https://puritysb.github.io/remin-support/og-image.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://puritysb.github.io/remin-support/ja/">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="ko_KR">
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://puritysb.github.io/remin-support/ja/">
+    <link rel="alternate" hreflang="en" href="https://puritysb.github.io/remin-support/">
+    <link rel="alternate" hreflang="ko" href="https://puritysb.github.io/remin-support/ko/">
+    <link rel="alternate" hreflang="ja" href="https://puritysb.github.io/remin-support/ja/">
+    <link rel="alternate" hreflang="x-default" href="https://puritysb.github.io/remin-support/">
+
+    <!-- Cloud/Server Icon or App Icon -->
+    <link rel="icon" type="image/png" href="../app-icon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="./" class="logo">
+                <!-- Tiny logo icon next to text -->
+                <img src="../app-icon.png" alt="Remin"
+                    style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; border-radius: 6px;">
+                Remin
+            </a>
+            <div class="nav-links">
+                <a href="https://apps.apple.com/us/app/remin/id6755936363" class="download-btn small">ダウンロード</a>
+                <!-- Language Switcher -->
+                <div class="lang-switcher">
+                    <button class="lang-current" aria-label="言語を変更">
+                        <span class="lang-code">JA</span>
+                        <svg class="lang-arrow" viewBox="0 0 12 12" width="12" height="12">
+                            <path d="M3 5l3 3 3-3" stroke="currentColor" fill="none" stroke-width="1.5"/>
+                        </svg>
+                    </button>
+                    <div class="lang-dropdown">
+                        <a href="../" class="lang-option" data-lang="en">English</a>
+                        <a href="../ko/" class="lang-option" data-lang="ko">한국어</a>
+                        <a href="./" class="lang-option" data-lang="ja">日本語</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="text-group">
+                <h1>
+                    <img src="../app-icon.png" alt="App Icon"
+                        style="width: 52px; height: 52px; border-radius: 12px; vertical-align: bottom; margin-right: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                    整理不要で完成する<br>旅の記録
+                </h1>
+                <p class="subtitle">
+                    写真さえあれば十分です。<br>
+                    時間と場所の流れであなたの旅を描き直します。
+                </p>
+                <div class="cta-group" id="download">
+                    <a href="https://apps.apple.com/us/app/remin/id6755936363" class="app-store-btn"
+                        aria-label="App Storeでダウンロード">
+                        <svg viewBox="0 0 384 512" width="18" height="18" fill="currentColor">
+                            <path
+                                d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 43.3-25.6 63.7 26.2 1.3 52.6-9.1 69.5-26.1z" />
+                        </svg>
+                        App Storeでダウンロード
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="iphone-mockup">
+                    <div class="notch"></div>
+                    <div class="screen">
+                        <video autoplay loop muted playsinline class="app-video">
+                            <source src="../videos/app-preview-jp.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- What's New in 2.0 -->
+    <section id="whats-new" class="whats-new">
+        <div class="container">
+            <div class="section-header">
+                <span class="version-badge">v2.0</span>
+                <h2>新機能</h2>
+            </div>
+            <div class="new-features">
+                <div class="new-feature-item">
+                    <div class="feature-icon">🌍</div>
+                    <h3>多言語対応</h3>
+                    <p>日本語、英語、韓国語に対応しました。</p>
+                </div>
+                <div class="new-feature-item">
+                    <div class="feature-icon">📅</div>
+                    <h3>この日の思い出</h3>
+                    <p>日付ごとに旅行写真を閲覧し、過去の同じ日を振り返りましょう。</p>
+                </div>
+                <div class="new-feature-item">
+                    <div class="feature-icon">📱</div>
+                    <h3>iPad対応</h3>
+                    <p>より大きな画面で旅行写真を楽しめます。Macでも使用可能です。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshot Gallery -->
+    <section id="screenshots" class="screenshots">
+        <div class="container">
+            <div class="section-header">
+                <h2>Reminプレビュー</h2>
+            </div>
+            <div class="screenshot-grid">
+                <img src="../screenshots/jp/iphone-1.png" alt="アクティビティ一覧" loading="lazy">
+                <img src="../screenshots/jp/iphone-2.png" alt="シネマティックフライト" loading="lazy">
+                <img src="../screenshots/jp/iphone-3.png" alt="マップビュー" loading="lazy">
+                <img src="../screenshots/jp/iphone-4.png" alt="コンテンツ作成" loading="lazy">
+                <img src="../screenshots/jp/iphone-5.png" alt="検索" loading="lazy">
+                <img src="../screenshots/jp/iphone-6.png" alt="プライバシー" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- iPad Section -->
+    <section id="ipad" class="ipad-showcase">
+        <div class="container">
+            <div class="section-header">
+                <h2>iPadでもっと広く</h2>
+                <p class="section-subtitle">大画面で旅の瞬間をより深く楽しめます</p>
+            </div>
+            <div class="ipad-gallery">
+                <img src="../screenshots/jp/ipad-1.png" alt="iPad - アクティビティ一覧" loading="lazy">
+                <img src="../screenshots/jp/ipad-2.png" alt="iPad - マップビュー" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-combined">
+        <div class="container">
+            <div class="section-header">
+                <h2>主な機能</h2>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <img src="../screenshots/jp/iphone-1.png" alt="アクティビティ一覧" loading="lazy">
+                    <div class="feature-info">
+                        <h3>4段階スマートクラスタリング</h3>
+                        <p>時間→GPS→視覚的類似度→品質。4つの基準でベストショットを自動選別します。</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <img src="../screenshots/jp/iphone-3.png" alt="マップビュー" loading="lazy">
+                    <div class="feature-info">
+                        <h3>地図上の旅路</h3>
+                        <p>移動ルートと共にその場所での思い出を地図上に展開します。</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <img src="../screenshots/jp/iphone-2.png" alt="動画生成" loading="lazy">
+                    <div class="feature-info">
+                        <h3>動画生成</h3>
+                        <p>旅行写真からシネマティック動画を自動生成します。</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <img src="../screenshots/jp/iphone-7.png" alt="この日の思い出" loading="lazy">
+                    <div class="feature-info">
+                        <h3>この日の思い出</h3>
+                        <p>カレンダーで日付ごとの写真を閲覧し、1年前の同じ日を振り返ります。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="privacy-notice">
+                <span class="privacy-icon">🔒</span>
+                <span>すべての処理はデバイス内で行われます。写真が外部に送信されることはありません。</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>使い方</h2>
+            </div>
+            <div class="flow-grid">
+                <div class="flow-card">
+                    <div class="flow-number">1</div>
+                    <h3>アルバム選択</h3>
+                    <p>旅行写真が入ったアルバムを選択してください。</p>
+                </div>
+                <div class="flow-card">
+                    <div class="flow-number">2</div>
+                    <h3>自動分析</h3>
+                    <p>Reminが時間と場所を分析して整理します。</p>
+                </div>
+                <div class="flow-card">
+                    <div class="flow-number">3</div>
+                    <h3>鑑賞する</h3>
+                    <p>完成したあなただけの旅行記を楽しみましょう。</p>
+                </div>
+            </div>
+            <div class="how-it-works-details">
+                <p>iPhone・iPad対応（Mac互換）・オンデバイス処理</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Remin</div>
+                <p>&copy; 2025 Remin Team. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="privacy.html">プライバシーポリシー</a>
+                    <a href="support.html">サポート</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script for subtle interactions -->
+    <script src="../lang-switcher.js"></script>
+    <script>
+        // スクロール時の要素フェードイン効果
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+
+        document.querySelectorAll('.feature-card, .screenshot-grid img').forEach((el) => observer.observe(el));
+    </script>
+</body>
+
+</html>

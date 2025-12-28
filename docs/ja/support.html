@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remin - サポート</title>
+    <meta name="description" content="Reminサポート・お問い合わせ">
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://puritysb.github.io/remin-support/ja/support.html">
+    <link rel="alternate" hreflang="en" href="https://puritysb.github.io/remin-support/support.html">
+    <link rel="alternate" hreflang="ko" href="https://puritysb.github.io/remin-support/ko/support.html">
+    <link rel="alternate" hreflang="ja" href="https://puritysb.github.io/remin-support/ja/support.html">
+    <link rel="alternate" hreflang="x-default" href="https://puritysb.github.io/remin-support/support.html">
+
+    <link rel="icon" type="image/png" href="../app-icon.png">
+    <link rel="stylesheet" href="../style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="../app-icon.png" alt="Remin"
+                    style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; border-radius: 6px;">
+                Remin
+            </a>
+            <div class="nav-links">
+                <a href="privacy.html" class="download-btn small">プライバシーポリシー</a>
+                <!-- Language Switcher -->
+                <div class="lang-switcher">
+                    <button class="lang-current" aria-label="言語を変更">
+                        <span class="lang-code">JA</span>
+                        <svg class="lang-arrow" viewBox="0 0 12 12" width="12" height="12">
+                            <path d="M3 5l3 3 3-3" stroke="currentColor" fill="none" stroke-width="1.5"/>
+                        </svg>
+                    </button>
+                    <div class="lang-dropdown">
+                        <a href="../" class="lang-option" data-lang="en">English</a>
+                        <a href="../ko/" class="lang-option" data-lang="ko">한국어</a>
+                        <a href="./" class="lang-option" data-lang="ja">日本語</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page">
+        <div class="container">
+            <div class="page-card">
+                <h1>サポート</h1>
+                <p>Reminの使用中に問題がある場合は、以下の項目をご確認ください。</p>
+
+                <h2>よくある質問</h2>
+                <ul>
+                    <li><strong>写真が表示されない</strong>：iOS設定→プライバシーとセキュリティ→写真→Reminで写真アクセス権限を許可してください。</li>
+                    <li><strong>分析に時間がかかる</strong>：写真の数（数百〜数千枚）、iCloudダウンロード状況、デバイス性能によって時間が異なる場合があります。</li>
+                    <li><strong>バックグラウンドで止まっているようだ</strong>：アプリを再度開いて進行状況を確認してください。iOSは状況に応じてバックグラウンド処理を制限する場合があります。</li>
+                </ul>
+
+                <h2>お問い合わせ</h2>
+                <p>最も簡単な方法はGitHub Issuesを利用することです。</p>
+                <ul>
+                    <li>Issues：<a href="https://github.com/puritysb/remin-support/issues"
+                            target="_blank" rel="noopener noreferrer">https://github.com/puritysb/remin-support/issues</a></li>
+                </ul>
+
+                <h2>バグレポートに含めると良い情報</h2>
+                <ul>
+                    <li>デバイス/OSバージョン</li>
+                    <li>おおよその写真数（アルバムサイズ）</li>
+                    <li>再現方法（どの画面で、どのボタンを押したか）</li>
+                    <li>可能であればスクリーンショット</li>
+                </ul>
+
+                <h2>プライバシー</h2>
+                <p>Reminはアプリ機能の提供のために写真にアクセスしますが、自社サーバーに写真をアップロードしません。詳細は
+                    <a href="privacy.html">プライバシーポリシー</a>をご参照ください。</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Remin</div>
+                <p>&copy; 2025 Remin Team. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="privacy.html">プライバシーポリシー</a>
+                    <a href="support.html">サポート</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../lang-switcher.js"></script>
+</body>
+
+</html>
