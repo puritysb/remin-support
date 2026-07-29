@@ -1,20 +1,80 @@
-/* Liquid Glass & Modern Aesthetics */
+/* Remin — 사이트 컴포넌트 스타일
+ *
+ * 값은 여기서 정하지 않는다. 브랜드 색·간격·모서리·그림자·타입 스케일은
+ * tokens.css (Swift 정본에서 생성) 의 토큰을 참조한다.
+ * 모든 페이지는 tokens.css 를 style.css 보다 먼저 link 해야 한다.
+ *
+ * --site-* 층만 이 파일이 소유한다. 앱에 대응 토큰이 없는 것들이다:
+ *   야간 배경 그라데이션, 글래스 표면, 섹션 리듬, 디스플레이 타입, 기기 목업.
+ * 앱 디자인 시스템과의 대응 관계는 system.html 에 문서화되어 있다.
+ */
 
 :root {
-    --bg-start: #0f0c29;
-    --bg-mid: #302b63;
-    --bg-end: #24243e;
-    --primary: #ff9a76;
-    /* Coral Orange */
-    --secondary: #ff7a59;
-    /* Deep Orange */
-    --text-main: #ffffff;
-    --text-muted: #d0d0d0;
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-highlight: rgba(255, 255, 255, 0.2);
-    --font-heading: 'Inter', sans-serif;
-    --font-body: 'Noto Sans KR', sans-serif;
+    /* 야간 배경 — 사이트 전용. 앱은 시스템 배경(adaptiveBackground)을 쓴다. */
+    --site-bg-start: #0f0c29;
+    --site-bg-mid: #302b63;
+    --site-bg-end: #24243e;
+
+    /* 텍스트 — 사이트는 다크 전용이라 고정색. 앱은 .label 동적 색. */
+    --site-text-main: #ffffff;
+    --site-text-muted: #d0d0d0;
+    --site-ink-on-white: #000;
+    /* 흰 배경 위 글자 — App Store 배지 규격 */
+
+    /* 글래스 표면 — 앱 LiquidGlassCard 의 웹 근사치 (material 대응 없음) */
+    --site-glass-bg: rgba(255, 255, 255, 0.05);
+    --site-glass-bg-hover: rgba(255, 255, 255, 0.08);
+    --site-glass-border: rgba(255, 255, 255, 0.1);
+    --site-control-bg: rgba(255, 255, 255, 0.1);
+    --site-control-bg-hover: rgba(255, 255, 255, 0.2);
+    --site-dropdown-bg: rgba(30, 30, 40, 0.95);
+    --site-scrollbar-thumb: rgba(255, 255, 255, 0.3);
+
+    /* 섹션 스크림 — 섹션을 배경에서 분리하는 검정 오버레이 */
+    --site-scrim-faint: rgba(0, 0, 0, 0.05);
+    --site-scrim-soft: rgba(0, 0, 0, 0.1);
+    --site-scrim: rgba(0, 0, 0, 0.15);
+    --site-scrim-strong: rgba(0, 0, 0, 0.2);
+
+    /* 섹션 리듬 — 앱 간격 스케일은 32px 에서 끝난다. 랜딩 페이지는 더 크게 숨쉰다. */
+    --site-gap-lg: 40px;
+    --site-gap-xl: 50px;
+    --site-gap-xxl: 60px;
+    --site-section-y: 100px;
+    --site-section-y-sm: 80px;
+    --site-page-y: 120px;
+
+    /* 디스플레이 타입 — 앱 largeTitle(34px) 위쪽 구간. 웹 히어로 전용. */
+    --site-fs-hero: 3.2rem;
+    --site-fs-hero-mobile: 2.2rem;
+    --site-fs-section: 2.5rem;
+    --site-fw-display: 800;
+    --site-fs-emoji: 2.5rem;
+    --site-fs-emoji-sm: 2rem;
+
+    /* 기기 목업 — 하드웨어 곡률/재질. 앱 radius·색 스케일과 무관. */
+    --site-device-radius: 50px;
+    --site-device-notch-radius: 15px;
+    --site-device-body: #000;
+    --site-device-bezel: #333;
+    --site-device-screen: #1c1c1e;
+
+    /* 텍스트 그라데이션 꼬리색 — 로고/히어로 전용, 브랜드 팔레트 아님 */
+    --site-logo-gradient-end: #a0a0a0;
+    --site-hero-gradient-end: #ffe0d5;
+
+    /* 사이트 그림자 — 이미지/버튼 리프트. 앱 그림자는 UI 요소용이라 더 얕다. */
+    --site-sh-image: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --site-sh-image-hover: 0 12px 32px rgba(0, 0, 0, 0.4);
+    --site-sh-lift: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --site-sh-device: 0 20px 50px rgba(0, 0, 0, 0.5);
+    --site-sh-showcase: 0 12px 40px rgba(0, 0, 0, 0.4);
+    --site-sh-showcase-hover: 0 16px 48px rgba(0, 0, 0, 0.5);
+    --site-sh-thumb: 0 8px 24px rgba(0, 0, 0, 0.3);
+
+    /* 폰트 — SF Pro Rounded 미배포로 앱과 다른 계열 (tokens.css 제외 목록 참조) */
+    --site-font-heading: 'Inter', sans-serif;
+    --site-font-body: 'Noto Sans KR', sans-serif;
 }
 
 * {
@@ -24,17 +84,17 @@
 }
 
 body {
-    font-family: var(--font-body);
-    color: var(--text-main);
-    background-color: var(--bg-start);
+    font-family: var(--site-font-body);
+    color: var(--site-text-main);
+    background-color: var(--site-bg-start);
     overflow-x: hidden;
     line-height: 1.6;
     word-break: keep-all;
-    /* Prevent Korean words from breaking mid-word */
+    /* 한국어를 어절 단위로 끊는다 */
     -webkit-font-smoothing: antialiased;
 }
 
-/* Japanese word-break - allow natural breaking */
+/* 일본어는 자연스러운 줄바꿈 허용 */
 html[lang="ja"] body {
     word-break: normal;
     overflow-wrap: break-word;
@@ -47,11 +107,11 @@ html[lang="ja"] body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(135deg, var(--bg-start), var(--bg-mid), var(--bg-end));
+    background: linear-gradient(135deg, var(--site-bg-start), var(--site-bg-mid), var(--site-bg-end));
     z-index: -1;
 }
 
-/* Subtle Animated Orbs (Optional for premium feel) */
+/* 브랜드 색으로 은은하게 떠 있는 구체 */
 .background-gradient::before {
     content: '';
     position: absolute;
@@ -59,8 +119,9 @@ html[lang="ja"] body {
     right: -10%;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(255, 154, 118, 0.15), transparent 70%);
-    /* Reduced opacity for subtlety */
+    background: radial-gradient(circle,
+            color-mix(in srgb, var(--c-primary) 15%, transparent),
+            transparent 70%);
     border-radius: 50%;
     animation: drift 20s infinite alternate ease-in-out;
     pointer-events: none;
@@ -76,11 +137,21 @@ html[lang="ja"] body {
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .background-gradient::before {
+        animation: none;
+    }
+
+    * {
+        transition-duration: 0.01ms !important;
+    }
+}
+
 /* Layout */
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 var(--s-xxl);
 }
 
 /* Navbar */
@@ -88,11 +159,11 @@ html[lang="ja"] body {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 20px 0;
+    padding: var(--s-xl) 0;
     z-index: 100;
     backdrop-filter: blur(10px);
-    background: rgba(15, 12, 41, 0.3);
-    border-bottom: 1px solid var(--glass-border);
+    background: color-mix(in srgb, var(--site-bg-start) 30%, transparent);
+    border-bottom: 1px solid var(--site-glass-border);
 }
 
 .navbar .container {
@@ -102,10 +173,10 @@ html[lang="ja"] body {
 }
 
 .logo {
-    font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: 1.5rem;
-    background: linear-gradient(to right, #fff, #a0a0a0);
+    font-family: var(--site-font-heading);
+    font-weight: var(--site-fw-display);
+    font-size: var(--fs-title-2);
+    background: linear-gradient(to right, var(--site-text-main), var(--site-logo-gradient-end));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -114,22 +185,22 @@ html[lang="ja"] body {
 }
 
 .download-btn {
-    padding: 10px 20px;
-    border-radius: 99px;
+    padding: var(--s-md) var(--s-xl);
+    border-radius: var(--r-pill);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: var(--fw-headline);
     transition: all 0.3s ease;
 }
 
 .download-btn.small {
-    font-size: 0.9rem;
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    border: 1px solid var(--glass-border);
+    font-size: var(--fs-caption);
+    background: var(--site-control-bg);
+    color: var(--site-text-main);
+    border: 1px solid var(--site-glass-border);
 }
 
 .download-btn.small:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--site-control-bg-hover);
 }
 
 /* Hero Section */
@@ -139,38 +210,25 @@ html[lang="ja"] body {
     display: flex;
     align-items: center;
     position: relative;
-    padding-top: 80px;
-    /* navbar height */
+    padding-top: var(--site-section-y-sm);
+    /* navbar 높이 */
 }
 
 .hero-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: var(--site-gap-xxl);
     align-items: center;
     width: 100%;
 }
 
-.text-group .badge {
-    display: inline-block;
-    padding: 6px 12px;
-    background: rgba(255, 154, 118, 0.15);
-    border: 1px solid rgba(255, 154, 118, 0.4);
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #ff9a76;
-    margin-bottom: 24px;
-}
-
 .text-group h1 {
-    font-family: var(--font-heading);
-    font-size: 3.2rem;
-    /* Reduced from 4rem for conciseness */
+    font-family: var(--site-font-heading);
+    font-size: var(--site-fs-hero);
     line-height: 1.2;
-    font-weight: 800;
-    margin-bottom: 24px;
-    background: linear-gradient(to bottom right, #ffffff, #ffe0d5);
+    font-weight: var(--site-fw-display);
+    margin-bottom: var(--s-xxl);
+    background: linear-gradient(to bottom right, var(--site-text-main), var(--site-hero-gradient-end));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -178,9 +236,9 @@ html[lang="ja"] body {
 }
 
 .subtitle {
-    font-size: 1.25rem;
-    color: var(--text-muted);
-    margin-bottom: 40px;
+    font-size: var(--fs-title-3);
+    color: var(--site-text-muted);
+    margin-bottom: var(--site-gap-lg);
     font-weight: 300;
 }
 
@@ -188,32 +246,31 @@ html[lang="ja"] body {
 .app-store-btn {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
-    background: white;
-    color: black;
-    padding: 16px 32px;
-    border-radius: 16px;
+    gap: var(--s-md);
+    background: var(--site-text-main);
+    color: var(--site-ink-on-white);
+    padding: var(--s-lg) var(--s-xxxl);
+    border-radius: var(--r-lg);
     text-decoration: none;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: var(--fs-headline);
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .app-store-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--site-sh-lift);
 }
 
-/* iPhone Mockup (CSS only) */
+/* iPhone 목업 (CSS only) */
 .iphone-mockup {
     width: 300px;
-    /* Reduced for demo */
     height: 600px;
-    background: #000;
-    border-radius: 50px;
-    border: 8px solid #333;
+    background: var(--site-device-body);
+    border-radius: var(--site-device-radius);
+    border: 8px solid var(--site-device-bezel);
     position: relative;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    box-shadow: var(--site-sh-device);
     margin: 0 auto;
     overflow: hidden;
 }
@@ -225,21 +282,20 @@ html[lang="ja"] body {
     transform: translateX(-50%);
     width: 100px;
     height: 25px;
-    background: #000;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    background: var(--site-device-body);
+    border-bottom-left-radius: var(--site-device-notch-radius);
+    border-bottom-right-radius: var(--site-device-notch-radius);
     z-index: 10;
 }
 
 .iphone-mockup .screen {
     width: 100%;
     height: 100%;
-    background: #1c1c1e;
+    background: var(--site-device-screen);
     overflow: hidden;
     position: relative;
 }
 
-/* App Video in Mockup */
 .app-video {
     width: 100%;
     height: 100%;
@@ -249,23 +305,23 @@ html[lang="ja"] body {
 
 /* Screenshot Gallery */
 .screenshots {
-    padding: 100px 0;
-    background: rgba(0, 0, 0, 0.1);
+    padding: var(--site-section-y) 0;
+    background: var(--site-scrim-soft);
 }
 
 .screenshot-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 12px;
-    margin-top: 40px;
+    gap: var(--s-md);
+    margin-top: var(--site-gap-lg);
 }
 
 .screenshot-grid img {
     width: 100%;
     height: auto;
-    border-radius: 10px;
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-radius: var(--r-md);
+    border: 1px solid var(--site-glass-border);
+    box-shadow: var(--site-sh-image);
     transition: transform 0.3s, box-shadow 0.3s;
     opacity: 0;
     transform: translateY(20px);
@@ -279,77 +335,311 @@ html[lang="ja"] body {
 
 .screenshot-grid img:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--site-sh-image-hover);
 }
 
-/* Feature List (Simple) */
-.features-simple {
-    padding: 100px 0;
-}
-
-.feature-list {
-    max-width: 800px;
-    margin: 60px auto 0;
-}
-
-.feature-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    padding: 24px 0;
-    border-bottom: 1px solid var(--glass-border);
-}
-
-.feature-item:last-child {
-    border-bottom: none;
-}
-
-.feature-icon {
-    font-size: 2rem;
-    flex-shrink: 0;
-}
-
-.feature-text h3 {
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-    color: var(--text-main);
-}
-
-.feature-text p {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-}
-
-/* Features Section (Legacy - kept for Why Remin) */
-.features {
-    padding: 100px 0;
-    background: rgba(0, 0, 0, 0.2);
-}
-
+/* Section header */
 .section-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: var(--site-gap-xxl);
 }
 
 .section-header h2 {
-    font-size: 2.5rem;
-    margin-bottom: 16px;
+    font-size: var(--site-fs-section);
+    margin-bottom: var(--s-lg);
+}
+
+.section-subtitle {
+    color: var(--site-text-muted);
+    font-size: var(--fs-headline);
+    margin-top: var(--s-md);
+}
+
+/* Footer */
+footer {
+    padding: var(--site-gap-xxl) 0;
+    border-top: 1px solid var(--site-glass-border);
+    text-align: center;
+    color: var(--site-text-muted);
+}
+
+.footer-links {
+    margin-top: var(--s-xl);
+}
+
+.footer-links a {
+    color: var(--site-text-muted);
+    text-decoration: none;
+    margin: 0 var(--s-md);
+    font-size: var(--fs-caption);
+}
+
+/* 본문 페이지 (privacy/support/system) */
+.page {
+    padding: var(--site-page-y) 0 var(--site-section-y-sm);
+}
+
+.page .page-card {
+    background: var(--site-glass-bg);
+    border: 1px solid var(--site-glass-border);
+    border-radius: var(--r-xxl);
+    padding: var(--s-xxxl);
+    backdrop-filter: blur(10px);
+    text-align: left;
+}
+
+.page h1 {
+    font-family: var(--site-font-heading);
+    font-size: var(--fs-large-title);
+    margin-bottom: var(--s-lg);
+}
+
+.page h2 {
+    font-size: var(--fs-title-3);
+    margin: var(--s-xxl) 0 var(--s-sm);
+}
+
+.page p,
+.page li {
+    color: var(--site-text-muted);
+    font-size: var(--fs-callout);
+}
+
+.page a {
+    color: var(--site-text-main);
+}
+
+/* How It Works Section */
+.how-it-works {
+    padding: var(--site-section-y) 0;
+    background: var(--site-scrim);
+}
+
+.how-it-works-details {
+    max-width: 700px;
+    margin: var(--site-gap-lg) auto 0;
+    text-align: center;
+}
+
+.how-it-works-details p {
+    font-size: var(--fs-caption);
+    color: var(--site-text-muted);
+    margin-bottom: var(--s-sm);
+}
+
+.flow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--s-xxxl);
+    margin-top: var(--site-gap-xxl);
+}
+
+.flow-card {
+    padding: var(--site-gap-lg);
+    border-radius: var(--r-xxl);
+    background: var(--site-glass-bg);
+    border: 1px solid var(--site-glass-border);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.flow-card:hover {
+    transform: translateY(-5px);
+    background: var(--site-glass-bg-hover);
+}
+
+.flow-number {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto var(--s-xl);
+    border-radius: 50%;
+    background: var(--c-gradient);
+    color: var(--site-text-main);
+    font-size: var(--site-fs-emoji-sm);
+    font-weight: var(--site-fw-display);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flow-card h3 {
+    font-size: var(--fs-title-3);
+    margin-bottom: var(--s-md);
+    color: var(--site-text-main);
+}
+
+.flow-card p {
+    color: var(--site-text-muted);
+    line-height: 1.6;
+}
+
+/* What's New Section */
+.whats-new {
+    padding: var(--site-section-y-sm) 0;
+    background: var(--site-scrim);
+}
+
+.version-badge {
+    display: inline-block;
+    padding: var(--s-sm) var(--s-lg);
+    background: var(--c-gradient);
+    border-radius: var(--r-xl);
+    font-size: var(--fs-footnote);
+    font-weight: 700;
+    color: var(--site-text-main);
+    margin-bottom: var(--s-md);
+}
+
+.new-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--s-xxl);
+    margin-top: var(--site-gap-lg);
+}
+
+.new-feature-item {
+    padding: var(--s-xxxl);
+    border-radius: var(--r-xl);
+    background: var(--site-glass-bg);
+    border: 1px solid var(--site-glass-border);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.new-feature-item:hover {
+    transform: translateY(-5px);
+    background: var(--site-glass-bg-hover);
+}
+
+.new-feature-item .feature-icon {
+    font-size: var(--site-fs-emoji);
+    margin-bottom: var(--s-lg);
+}
+
+.new-feature-item h3 {
+    font-size: var(--fs-headline);
+    margin-bottom: var(--s-sm);
+    color: var(--site-text-main);
+}
+
+.new-feature-item p {
+    color: var(--site-text-muted);
+    font-size: var(--fs-callout);
+    line-height: 1.5;
+}
+
+/* iPad Showcase Section */
+.ipad-showcase {
+    padding: var(--site-section-y) 0;
+    background: var(--site-scrim-faint);
+}
+
+.ipad-gallery {
+    display: flex;
+    gap: var(--s-xxl);
+    margin-top: var(--site-gap-xl);
+    overflow-x: auto;
+    padding-bottom: var(--s-xl);
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+.ipad-gallery::-webkit-scrollbar {
+    height: 8px;
+}
+
+.ipad-gallery::-webkit-scrollbar-track {
+    background: var(--site-control-bg);
+    border-radius: var(--r-xs);
+}
+
+.ipad-gallery::-webkit-scrollbar-thumb {
+    background: var(--site-scrollbar-thumb);
+    border-radius: var(--r-xs);
+}
+
+.ipad-gallery img {
+    flex-shrink: 0;
+    max-width: 500px;
+    height: auto;
+    border-radius: var(--r-lg);
+    border: 1px solid var(--site-glass-border);
+    box-shadow: var(--site-sh-showcase);
+    scroll-snap-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.ipad-gallery img:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--site-sh-showcase-hover);
+}
+
+/* Apple Watch Section */
+.watch-showcase {
+    padding: var(--site-section-y) 0;
+    background: var(--site-scrim-strong);
+}
+
+.watch-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--s-xxl);
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.watch-feature {
+    display: flex;
+    gap: var(--s-lg);
+    align-items: flex-start;
+    padding: var(--s-xl);
+    border-radius: var(--r-lg);
+    background: var(--site-glass-bg);
+    border: 1px solid var(--site-glass-border);
+    backdrop-filter: blur(10px);
+}
+
+.watch-feature .feature-icon {
+    font-size: var(--site-fs-emoji-sm);
+    flex-shrink: 0;
+}
+
+.watch-feature h3 {
+    font-size: var(--fs-headline);
+    margin-bottom: var(--s-xs);
+    color: var(--site-text-main);
+}
+
+.watch-feature p {
+    color: var(--site-text-muted);
+    font-size: var(--fs-callout);
+    line-height: 1.5;
+}
+
+/* 통합 기능 섹션 */
+.features-combined {
+    padding: var(--site-section-y) 0;
+    background: var(--site-scrim-soft);
 }
 
 .feature-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--site-gap-lg);
+    margin-top: var(--site-gap-xl);
 }
 
 .feature-card {
-    padding: 40px 30px;
-    border-radius: 24px;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(10px);
-    transition: transform 0.3s, background 0.3s;
+    display: flex;
+    gap: var(--s-xxl);
+    align-items: flex-start;
+    background: var(--site-glass-bg);
+    border: 1px solid var(--site-glass-border);
+    border-radius: var(--r-xl);
+    padding: var(--s-xl);
+    transition: transform 0.3s, box-shadow 0.3s;
     opacity: 0;
     transform: translateY(20px);
 }
@@ -361,378 +651,15 @@ html[lang="ja"] body {
 }
 
 .feature-card:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.08);
-}
-
-/* Feature Visual (Screenshots) */
-.feature-visual {
-    width: 100%;
-    margin-bottom: 20px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.feature-visual img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-.feature-card:hover .feature-visual img {
-    transform: scale(1.05);
-}
-
-.feature-card .icon {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-.feature-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 12px;
-}
-
-.feature-card p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
-/* Footer */
-footer {
-    padding: 60px 0;
-    border-top: 1px solid var(--glass-border);
-    text-align: center;
-    color: var(--text-muted);
-}
-
-.footer-links {
-    margin-top: 20px;
-}
-
-.footer-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    margin: 0 12px;
-    font-size: 0.9rem;
-}
-
-/* Simple content pages (privacy/support) */
-.page {
-    padding: 120px 0 80px;
-}
-
-.page .page-card {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 24px;
-    padding: 32px;
-    backdrop-filter: blur(10px);
-    text-align: left;
-}
-
-.page h1 {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    margin-bottom: 16px;
-}
-
-.page h2 {
-    font-size: 1.25rem;
-    margin: 28px 0 10px;
-}
-
-.page p,
-.page li {
-    color: var(--text-muted);
-    font-size: 0.98rem;
-}
-
-.page a {
-    color: var(--text-main);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 40px;
-    }
-
-    .hero {
-        height: auto;
-        padding-bottom: 60px;
-    }
-
-    .text-group h1 {
-        font-size: 2.2rem;
-        /* Reduced from 2.5rem */
-    }
-
-    .subtitle {
-        font-size: 1rem;
-    }
-
-    .iphone-mockup {
-        width: 260px;
-        height: 520px;
-    }
-
-    .screenshot-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
-    }
-}
-
-/* How It Works Section */
-.how-it-works {
-    padding: 100px 0;
-    background: rgba(0, 0, 0, 0.15);
-}
-
-.how-it-works-details {
-    max-width: 700px;
-    margin: 40px auto 0;
-    text-align: center;
-}
-
-.how-it-works-details p {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-}
-
-.flow-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 32px;
-    margin-top: 60px;
-}
-
-.flow-card {
-    padding: 40px;
-    border-radius: 24px;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(10px);
-    text-align: center;
-    transition: transform 0.3s, background 0.3s;
-}
-
-.flow-card:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.08);
-}
-
-.flow-number {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto 20px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
-    font-size: 2rem;
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.flow-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 12px;
-    color: var(--text-main);
-}
-
-.flow-card p {
-    color: var(--text-muted);
-    line-height: 1.6;
-}
-
-/* Why Remin Section */
-.why-remin {
-    padding: 100px 0;
-}
-
-.why-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 32px;
-    margin-top: 60px;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* What's New Section */
-.whats-new {
-    padding: 80px 0;
-    background: rgba(0, 0, 0, 0.15);
-}
-
-.version-badge {
-    display: inline-block;
-    padding: 6px 14px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 12px;
-}
-
-.new-features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    margin-top: 40px;
-}
-
-.new-feature-item {
-    padding: 32px;
-    border-radius: 20px;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(10px);
-    text-align: center;
-    transition: transform 0.3s, background 0.3s;
-}
-
-.new-feature-item:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.08);
-}
-
-.new-feature-item .feature-icon {
-    font-size: 2.5rem;
-    margin-bottom: 16px;
-}
-
-.new-feature-item h3 {
-    font-size: 1.15rem;
-    margin-bottom: 10px;
-    color: var(--text-main);
-}
-
-.new-feature-item p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
-/* iPad Showcase Section */
-.ipad-showcase {
-    padding: 100px 0;
-    background: rgba(0, 0, 0, 0.05);
-}
-
-.section-subtitle {
-    color: var(--text-muted);
-    font-size: 1.1rem;
-    margin-top: 12px;
-}
-
-.ipad-gallery {
-    display: flex;
-    gap: 24px;
-    margin-top: 50px;
-    overflow-x: auto;
-    padding-bottom: 20px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-}
-
-.ipad-gallery::-webkit-scrollbar {
-    height: 8px;
-}
-
-.ipad-gallery::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-}
-
-.ipad-gallery::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
-}
-
-.ipad-gallery img {
-    flex-shrink: 0;
-    max-width: 500px;
-    height: auto;
-    border-radius: 16px;
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-    scroll-snap-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.ipad-gallery img:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
-}
-
-@media (max-width: 768px) {
-    .ipad-gallery img {
-        max-width: 85vw;
-    }
-
-    .new-features {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* 핵심 차별점 강조 */
-.feature-item.highlight {
-    background: rgba(255, 154, 118, 0.08);
-    border-left: 3px solid var(--primary);
-    padding-left: 20px;
-    margin-left: -20px;
-    border-radius: 8px;
-}
-
-.feature-item.highlight strong {
-    color: var(--primary);
-}
-
-/* 통합 기능 섹션 */
-.features-combined {
-    padding: 100px 0;
-    background: rgba(0, 0, 0, 0.1);
-}
-
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    margin-top: 50px;
-}
-
-.feature-card {
-    display: flex;
-    gap: 24px;
-    align-items: flex-start;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 20px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.feature-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--site-sh-showcase);
 }
 
 .feature-card img {
     width: 140px;
     height: auto;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    border-radius: var(--r-lg);
+    box-shadow: var(--site-sh-thumb);
     flex-shrink: 0;
 }
 
@@ -741,14 +668,14 @@ footer {
 }
 
 .feature-info h3 {
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-    color: var(--text-main);
+    font-size: var(--fs-headline);
+    margin-bottom: var(--s-sm);
+    color: var(--site-text-main);
 }
 
 .feature-info p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
+    color: var(--site-text-muted);
+    font-size: var(--fs-callout);
     line-height: 1.6;
 }
 
@@ -756,67 +683,50 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    margin-top: 50px;
-    padding: 16px 24px;
-    background: rgba(255, 154, 118, 0.1);
-    border: 1px solid rgba(255, 154, 118, 0.2);
-    border-radius: 12px;
-    font-size: 0.95rem;
-    color: var(--text-muted);
+    gap: var(--s-md);
+    margin-top: var(--site-gap-xl);
+    padding: var(--s-lg) var(--s-xxl);
+    background: color-mix(in srgb, var(--c-primary) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--c-primary) 20%, transparent);
+    border-radius: var(--r-md);
+    font-size: var(--fs-callout);
+    color: var(--site-text-muted);
 }
 
 .privacy-icon {
-    font-size: 1.2rem;
-}
-
-@media (max-width: 768px) {
-    .feature-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    .feature-card {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .feature-card img {
-        width: 200px;
-    }
+    font-size: var(--fs-title-3);
 }
 
 /* Language Switcher */
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: var(--s-md);
 }
 
 .lang-switcher {
     position: relative;
-    margin-left: 4px;
+    margin-left: var(--s-xs);
 }
 
 .lang-current {
     display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid var(--glass-border);
-    border-radius: 8px;
-    color: var(--text-main);
-    font-size: 0.85rem;
-    font-weight: 600;
+    gap: var(--s-sm);
+    padding: var(--s-sm) var(--s-md);
+    background: var(--site-control-bg);
+    border: 1px solid var(--site-glass-border);
+    border-radius: var(--r-sm);
+    color: var(--site-text-main);
+    font-size: var(--fs-footnote);
+    font-weight: var(--fw-headline);
     cursor: pointer;
     transition: background 0.2s;
-    font-family: var(--font-heading);
+    font-family: var(--site-font-heading);
 }
 
 .lang-current:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: var(--site-control-bg-hover);
 }
 
 .lang-code {
@@ -834,12 +744,12 @@ footer {
 
 .lang-dropdown {
     position: absolute;
-    top: calc(100% + 8px);
+    top: calc(100% + var(--s-sm));
     right: 0;
     min-width: 120px;
-    background: rgba(30, 30, 40, 0.95);
-    border: 1px solid var(--glass-border);
-    border-radius: 12px;
+    background: var(--site-dropdown-bg);
+    border: 1px solid var(--site-glass-border);
+    border-radius: var(--r-md);
     backdrop-filter: blur(20px);
     opacity: 0;
     visibility: hidden;
@@ -857,30 +767,88 @@ footer {
 
 .lang-option {
     display: block;
-    padding: 12px 16px;
-    color: var(--text-muted);
+    padding: var(--s-md) var(--s-lg);
+    color: var(--site-text-muted);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: var(--fs-caption);
     transition: background 0.2s, color 0.2s;
 }
 
 .lang-option:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--text-main);
+    background: var(--site-control-bg);
+    color: var(--site-text-main);
 }
 
 .lang-option.active {
-    color: var(--primary);
-    font-weight: 600;
+    color: var(--c-primary);
+    font-weight: var(--fw-headline);
 }
 
+/* Responsive */
 @media (max-width: 768px) {
+    /* 좁은 화면에서 네비가 넘치지 않도록 보조 링크는 숨긴다 (푸터에서 계속 접근 가능) */
+    .nav-links .desktop-only {
+        display: none;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--site-gap-lg);
+    }
+
+    .hero {
+        height: auto;
+        padding-bottom: var(--site-gap-xxl);
+    }
+
+    .text-group h1 {
+        font-size: var(--site-fs-hero-mobile);
+    }
+
+    .subtitle {
+        font-size: var(--fs-callout);
+    }
+
+    .iphone-mockup {
+        width: 260px;
+        height: 520px;
+    }
+
+    .screenshot-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--s-sm);
+    }
+
+    .ipad-gallery img {
+        max-width: 85vw;
+    }
+
+    .new-features,
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-grid {
+        gap: var(--s-xxl);
+    }
+
+    .feature-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .feature-card img {
+        width: 200px;
+    }
+
     .lang-switcher {
-        margin-left: 8px;
+        margin-left: var(--s-sm);
     }
 
     .lang-current {
-        padding: 6px 10px;
-        font-size: 0.8rem;
+        padding: var(--s-sm) var(--s-md);
+        font-size: var(--fs-caption-2);
     }
 }

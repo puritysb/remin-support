@@ -15,6 +15,8 @@
     <link rel="alternate" hreflang="x-default" href="https://puritysb.github.io/remin-support/support.html">
 
     <link rel="icon" type="image/png" href="app-icon.png">
+    <!-- tokens.css 먼저 (Swift 정본에서 생성) → style.css 가 그 토큰을 참조 -->
+    <link rel="stylesheet" href="tokens.css">
     <link rel="stylesheet" href="style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
@@ -32,6 +34,7 @@
                 Remin
             </a>
             <div class="nav-links">
+                <a href="system.html" class="download-btn small desktop-only">Design</a>
                 <a href="privacy.html" class="download-btn small">Privacy Policy</a>
                 <!-- Language Switcher -->
                 <div class="lang-switcher">
@@ -42,9 +45,9 @@
                         </svg>
                     </button>
                     <div class="lang-dropdown">
-                        <a href="/" class="lang-option" data-lang="en">English</a>
-                        <a href="/ko/" class="lang-option" data-lang="ko">한국어</a>
-                        <a href="/ja/" class="lang-option" data-lang="ja">日本語</a>
+                        <a href="support.html" class="lang-option" data-lang="en">English</a>
+                        <a href="ko/support.html" class="lang-option" data-lang="ko">한국어</a>
+                        <a href="ja/support.html" class="lang-option" data-lang="ja">日本語</a>
                     </div>
                 </div>
             </div>
@@ -62,6 +65,11 @@
                     <li><strong>My photos don't appear</strong>: Go to iOS Settings > Privacy & Security > Photos > Remin and enable photo access permission.</li>
                     <li><strong>Analysis takes too long</strong>: Processing time varies depending on the number of photos (hundreds to thousands), iCloud download status, and device performance.</li>
                     <li><strong>It seems stuck in background</strong>: Reopen the app to check progress. iOS may limit background processing depending on system conditions.</li>
+                    <li><strong>Where are the Apple Watch features?</strong>: Install Remin on your watch from the Watch app on iPhone. Keeping a moment, voice memos and place shortcuts all sync to the iPhone the next time both are nearby.</li>
+                    <li><strong>A place shortcut shows nothing</strong>: Check that the address you registered is reachable over HTTPS and that the page still contains the code. If a fetch fails, Remin keeps showing the last code it read successfully.</li>
+                    <li><strong>No travel story is offered</strong>: AI stories need a device that supports Apple Intelligence, with it enabled in iOS Settings. Everything else in Remin works without it.</li>
+                    <li><strong>A voice memo was not transcribed</strong>: Transcription runs entirely on your device, so it needs an on-device speech model for that language. Remin will not send the audio to a server instead — the recording itself is kept and still plays back.</li>
+                    <li><strong>Video generation failed or looks wrong</strong>: Long clips are trimmed to about five seconds each for pacing. If a render fails, try again with fewer photos; rendering is done on-device and needs free storage.</li>
                 </ul>
 
                 <h2>Contact</h2>
@@ -80,7 +88,7 @@
                 </ul>
 
                 <h2>Privacy</h2>
-                <p>Remin accesses your photos to provide app functionality but does not upload photos to our servers. For details, see our
+                <p>Remin analyses your photos on your device and never uploads them. The one exception to network silence is a place shortcut you register yourself, which your iPhone fetches to read its code — no photo, location or analysis data is included. For details, see our
                     <a href="privacy.html">Privacy Policy</a>.</p>
             </div>
         </div>
@@ -90,10 +98,11 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">Remin</div>
-                <p>&copy; 2025 Remin Team. All rights reserved.</p>
+                <p>&copy; 2025–2026 Remin Team. All rights reserved.</p>
                 <div class="footer-links">
                     <a href="privacy.html">Privacy Policy</a>
                     <a href="support.html">Support</a>
+                    <a href="system.html">Design System</a>
                 </div>
             </div>
         </div>

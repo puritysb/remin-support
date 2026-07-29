@@ -1,0 +1,88 @@
+/* Remin — Design Tokens
+ *
+ * 생성물이다. 손으로 고치지 말 것.
+ * 정본: Remin/Design/ReminDesignTokens.swift · ReminTheme.swift · Assets.xcassets
+ * 갱신: python3 scripts/export_design_tokens.py
+ *
+ * 앱이 제품이고 사이트가 따라간다. 값을 바꾸려면 Swift 를 먼저 고친다.
+ * 사이트 전용 값(야간 배경, 글래스 표면 등 앱에 대응 토큰이 없는 것)은
+ * 여기가 아니라 style.css 의 --site-* 층에 둔다.
+ */
+
+:root {
+  /* === Brand color (Assets.xcassets 단일 소스) === */
+  --c-primary:        #ff9a76;   /* Coral Orange */
+  --c-secondary:      #ff7a59;   /* Deep Orange */
+  --c-gradient:       linear-gradient(135deg, var(--c-primary), var(--c-secondary));  /* ReminColor.gradient — 로컬 재정의 금지 */
+
+  /* === Status color (UIKit 시스템 색 라이트 기준값) === */
+  --c-success:     #34c759;   /* systemGreen — 완료/성공 */
+  --c-warning:     #ff9500;   /* systemOrange — 주의/진행 중 */
+  --c-error:       #ff3b30;   /* systemRed — 오류/삭제 */
+  --c-info:        #007aff;   /* systemBlue — 정보/링크 */
+
+  /* === Spacing — ReminSpacing (4pt 그리드) === */
+  --s-xxs:         2px;   /* 아이콘/라벨 사이 최소 간격 */
+  --s-xs:          4px;   /* 밀접한 요소 (뱃지 내부 등) */
+  --s-sm:          8px;   /* 관련 요소 그룹 내부 */
+  --s-md:          12px;   /* 카드 내부 기본 간격 */
+  --s-lg:          16px;   /* 화면 가장자리, 섹션 내부 */
+  --s-xl:          20px;   /* 카드 내부 패딩(넉넉한) */
+  --s-xxl:         24px;   /* 섹션 사이 */
+  --s-xxxl:        32px;   /* 큰 섹션 구분 */
+
+  /* === Radius — ReminRadius (6단계 고정, 새 값 추가 금지) === */
+  --r-xs:          4px;   /* 인라인 태그, 미니 뱃지 */
+  --r-sm:          8px;   /* 칩, 썸네일, 작은 컨트롤 */
+  --r-md:          12px;   /* 버튼, 리스트 행, 입력 필드 */
+  --r-lg:          16px;   /* 카드, 시트 내 컨테이너 */
+  --r-xl:          20px;   /* 플로팅 바, 대형 카드 */
+  --r-xxl:         24px;   /* 모달/오버레이 컨테이너 */
+  --r-pill:        999px;   /* Capsule() 대응 — 캡슐 형태는 이 토큰 */
+
+  /* === Shadow — .reminShadow(_:) === */
+  --sh-subtle:    0px 2px 8px rgba(0, 0, 0, 0.08);   /* 살짝 뜬 요소 (칩, 작은 컨트롤) */
+  --sh-card:      0px 4px 16px rgba(0, 0, 0, 0.1);   /* 카드 기본 그림자 */
+  --sh-floating:  0px 4px 24px rgba(0, 0, 0, 0.1), 0px 6px 32px rgba(255, 154, 118, 0.1);   /* 플로팅 요소 (FAB, 액션 바) — 이중 그림자 + 브랜드 틴트 */
+  --sh-brand:     0px 2px 16px rgba(255, 154, 118, 0.3);   /* 브랜드 색 강조 그림자 (그라데이션 버튼) */
+
+  /* === Type scale — ReminTypography === */
+  --fs-large-title:   34px;   /* 대형 제목 34pt (달력 표지 등) */
+  --fw-large-title:   700;
+  --fs-title:         28px;   /* 제목 28pt */
+  --fw-title:         600;
+  --fs-title-2:       24px;   /* 제목2 24pt (중간 크기) */
+  --fw-title-2:       600;
+  --fs-title-3:       20px;   /* 제목3 20pt (작은 제목) */
+  --fw-title-3:       600;
+  --fs-subtitle:      20px;   /* 부제목 20pt */
+  --fw-subtitle:      500;
+  --fs-headline:      17px;   /* 강조 본문 17pt semibold (버튼 라벨, 행 제목) */
+  --fw-headline:      600;
+  --fs-body:          17px;   /* 본문 17pt */
+  --fw-body:          400;
+  --fs-callout:       16px;   /* 콜아웃 16pt (버튼, 리스트 보조 텍스트) */
+  --fw-callout:       400;
+  --fs-caption:       14px;   /* 캡션 14pt */
+  --fw-caption:       400;
+  --fs-footnote:      13px;   /* 각주 13pt (보조 설명) */
+  --fw-footnote:      400;
+  --fs-caption-2:     12px;   /* 캡션2 12pt (메타 정보, 타임스탬프) */
+  --fw-caption-2:     400;
+  --fs-label:         11px;   /* 라벨 11pt (FAB/탭 라벨) */
+  --fw-label:         500;
+  --fs-micro:         10px;   /* 마이크로 10pt (뱃지, 최소 크기 — 이보다 작은 텍스트 금지) */
+  --fw-micro:         500;
+}
+
+/* 의도적 제외 (Swift 에는 있으나 CSS 로 옮기지 않음)
+ *   ReminColor.adaptiveText / adaptiveSecondaryText / adaptiveBackground /
+ *   adaptiveCardBackground — UIKit 동적 색(.label, .systemBackground) 파생.
+ *     CSS 정적 대응이 없고, 사이트는 현재 다크 전용이라 옮길 의미도 없다.
+ *   ReminColor.overlayText / overlayBackground — 사진 위 고정 white/black.
+ *     사이트에는 사진 오버레이 UI 가 없다.
+ *   상태 색의 다크 모드 변형 — 위 라이트 기준값만 옮겼다.
+ *   design: .rounded — SF Pro Rounded 는 웹 폰트로 배포하지 않는다.
+ *     사이트는 Inter/Noto Sans 로 대체하며, 이 차이는 의도된 것이다.
+ *   Dynamic Type 스케일링 — 웹은 rem/미디어 쿼리로 별도 대응한다.
+ */

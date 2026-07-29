@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remin - Design System</title>
+    <meta name="description"
+        content="The tokens behind Remin's app and website: color, type, spacing, radius, shadow. The app is the source of truth; this page documents what the site inherits from it.">
+
+    <link rel="canonical" href="https://puritysb.github.io/remin-support/system.html">
+
+    <link rel="icon" type="image/png" href="app-icon.png">
+    <!-- tokens.css 먼저 — style.css 와 이 페이지가 모두 그 토큰을 참조한다 -->
+    <link rel="stylesheet" href="tokens.css">
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* 이 페이지 고유의 배치만 여기에 둔다. 값은 모두 토큰 참조. */
+        .spec {
+            margin-bottom: var(--site-gap-xxl);
+        }
+
+        .spec>h2 {
+            font-size: var(--fs-title-2);
+            margin-bottom: var(--s-sm);
+        }
+
+        .spec>.note {
+            color: var(--site-text-muted);
+            font-size: var(--fs-callout);
+            margin-bottom: var(--s-xl);
+        }
+
+        .swatch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: var(--s-lg);
+        }
+
+        .swatch {
+            border-radius: var(--r-md);
+            border: 1px solid var(--site-glass-border);
+            overflow: hidden;
+        }
+
+        .swatch .chip {
+            height: 72px;
+        }
+
+        .swatch .meta {
+            padding: var(--s-md);
+            background: var(--site-glass-bg);
+        }
+
+        .swatch .name {
+            display: block;
+            font-size: var(--fs-footnote);
+            font-weight: var(--fw-headline);
+            color: var(--site-text-main);
+        }
+
+        .swatch .src {
+            display: block;
+            font-size: var(--fs-micro);
+            color: var(--site-text-muted);
+            margin-top: var(--s-xxs);
+        }
+
+        table.spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: var(--fs-caption);
+        }
+
+        table.spec-table th,
+        table.spec-table td {
+            text-align: left;
+            padding: var(--s-sm) var(--s-md);
+            border-bottom: 1px solid var(--site-glass-border);
+            vertical-align: middle;
+        }
+
+        table.spec-table th {
+            color: var(--site-text-main);
+            font-weight: var(--fw-headline);
+            font-size: var(--fs-footnote);
+        }
+
+        table.spec-table td {
+            color: var(--site-text-muted);
+        }
+
+        table.spec-table code {
+            color: var(--site-text-main);
+            font-size: var(--fs-micro);
+        }
+
+        .bar {
+            display: block;
+            height: 12px;
+            border-radius: var(--r-xs);
+            background: var(--c-gradient);
+        }
+
+        .radius-demo {
+            width: 72px;
+            height: 44px;
+            background: var(--site-glass-bg);
+            border: 1px solid var(--c-primary);
+        }
+
+        /* 앱 그림자는 밝은 표면 위에서 설계됐다. 어두운 배경에 두면 보이지 않으므로
+           견본은 라이트 무대 위에 올린다. */
+        .shadow-stage {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--site-gap-lg);
+            padding: var(--s-xxxl);
+            border-radius: var(--r-lg);
+            background: #f2f2f7;
+        }
+
+        .shadow-demo {
+            width: 140px;
+            height: 88px;
+            border-radius: var(--r-lg);
+            background: #ffffff;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: var(--s-sm);
+            font-size: var(--fs-micro);
+            color: #3c3c43;
+        }
+
+        .emotion-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--s-sm);
+        }
+
+        .emotion-tag {
+            padding: 6px var(--s-md);
+            border-radius: var(--r-sm);
+            background: color-mix(in srgb, var(--c-primary) 20%, transparent);
+            font-size: var(--fs-caption);
+        }
+
+        .layer-card {
+            padding: var(--s-xl);
+            border-radius: var(--r-lg);
+            background: var(--site-glass-bg);
+            border: 1px solid var(--site-glass-border);
+        }
+
+        .layer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--s-lg);
+        }
+
+        .layer-card h3 {
+            font-size: var(--fs-headline);
+            margin-bottom: var(--s-sm);
+        }
+
+        .layer-card p {
+            font-size: var(--fs-caption);
+            color: var(--site-text-muted);
+        }
+
+        pre.cmd {
+            margin-top: var(--s-md);
+            padding: var(--s-md) var(--s-lg);
+            border-radius: var(--r-sm);
+            background: var(--site-scrim-strong);
+            border: 1px solid var(--site-glass-border);
+            font-size: var(--fs-footnote);
+            color: var(--site-text-main);
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="app-icon.png" alt="Remin"
+                    style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; border-radius: 6px;">
+                Remin
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="download-btn small">Home</a>
+                <a href="support.html" class="download-btn small">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page">
+        <div class="container">
+            <div class="page-card">
+                <h1>Design System</h1>
+                <p>
+                    Remin's app and this website share one set of tokens. The app is the product and the source of
+                    truth: color, type, spacing, radius and shadow are defined in Swift, exported to
+                    <code>tokens.css</code>, and consumed here. Change a value in Swift, re-run the exporter, and every
+                    surface follows.
+                </p>
+
+                <div class="spec" style="margin-top: var(--site-gap-lg);">
+                    <h2>How it flows</h2>
+                    <p class="note">
+                        Three layers, in order of authority. Nothing below invents a value that belongs above.
+                    </p>
+                    <div class="layer-grid">
+                        <div class="layer-card">
+                            <h3>1. Swift (canonical)</h3>
+                            <p>
+                                <code>ReminDesignTokens.swift</code> — spacing, radius, shadow.<br>
+                                <code>ReminTheme.swift</code> — type scale.<br>
+                                <code>Assets.xcassets</code> — brand color.
+                            </p>
+                        </div>
+                        <div class="layer-card">
+                            <h3>2. tokens.css (generated)</h3>
+                            <p>
+                                A build artifact — never hand-edited. Holds <code>--c-*</code>, <code>--s-*</code>,
+                                <code>--r-*</code>, <code>--sh-*</code>, <code>--fs-*</code>/<code>--fw-*</code>.
+                            </p>
+                            <pre class="cmd">python3 scripts/export_design_tokens.py</pre>
+                        </div>
+                        <div class="layer-card">
+                            <h3>3. style.css (site-only)</h3>
+                            <p>
+                                Owns the <code>--site-*</code> layer: the night background, glass surfaces, section
+                                rhythm, display type and device mockups. These have no app counterpart, and saying so
+                                explicitly is the point.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="spec">
+                    <h2>Brand color</h2>
+                    <p class="note">
+                        Single source: the <code>ReminPrimary</code> / <code>ReminSecondary</code> colorsets. The 135°
+                        gradient is a token in its own right — no local re-definitions.
+                    </p>
+                    <div class="swatch-grid">
+                        <div class="swatch">
+                            <div class="chip" style="background: var(--c-primary);"></div>
+                            <div class="meta">
+                                <span class="name">--c-primary</span>
+                                <span class="src">Coral Orange · ReminColor.primary</span>
+                            </div>
+                        </div>
+                        <div class="swatch">
+                            <div class="chip" style="background: var(--c-secondary);"></div>
+                            <div class="meta">
+                                <span class="name">--c-secondary</span>
+                                <span class="src">Deep Orange · ReminColor.secondary</span>
+                            </div>
+                        </div>
+                        <div class="swatch">
+                            <div class="chip" style="background: var(--c-gradient);"></div>
+                            <div class="meta">
+                                <span class="name">--c-gradient</span>
+                                <span class="src">135° · ReminColor.gradient</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="spec">
+                    <h2>Status color</h2>
+                    <p class="note">
+                        Semantic only. Never a raw named color for state — the app forbids <code>.orange</code> /
+                        <code>.blue</code> literals for status, and so does the site. Values shown are the light-mode
+                        reference of the UIKit system colors.
+                    </p>
+                    <div class="swatch-grid">
+                        <div class="swatch">
+                            <div class="chip" style="background: var(--c-success);"></div>
+                            <div class="meta">
+                                <span class="name">--c-success</span>
+                                <span class="src">systemGreen · done</span>
+                            </div>
+                        </div>
+                        <div class="swatch">
+                            <div class="chip" style="background: var(--c-warning);"></div>
+                            <div class="meta">
+                                <span class="name">--c-warning</span>
+                                <span class="src">systemOrange · in progress</span>
+                            </div>
+                        </div>
+                        <div class="swatch">
+                            <div class="chip" style="background: var(--c-error);"></div>
+                            <div class="meta">
+                                <span class="name">--c-error</span>
+                                <span class="src">systemRed · destructive</span>
+                            </div>
+                        </div>
+                        <div class="swatch">
+                            <div class="chip" style="background: var(--c-info);"></div>
+                            <div class="meta">
+                                <span class="name">--c-info</span>
+                                <span class="src">systemBlue · info</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="spec">
+                    <h2>Type scale</h2>
+                    <p class="note">
+                        Thirteen steps, mirroring <code>ReminTypography</code>. The app renders several of them in SF
+                        Pro Rounded; the web substitutes Inter / Noto Sans, which is a deliberate difference. 10px is
+                        the floor — nothing smaller ships.
+                    </p>
+                    <table class="spec-table">
+                        <thead>
+                            <tr>
+                                <th>Token</th>
+                                <th>Size</th>
+                                <th>Specimen</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>--fs-large-title</code></td>
+                                <td>34</td>
+                                <td style="font-size: var(--fs-large-title); font-weight: var(--fw-large-title);">Remin
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>--fs-title</code></td>
+                                <td>28</td>
+                                <td style="font-size: var(--fs-title); font-weight: var(--fw-title);">Your Journey</td>
+                            </tr>
+                            <tr>
+                                <td><code>--fs-title-2</code></td>
+                                <td>24</td>
+                                <td style="font-size: var(--fs-title-2); font-weight: var(--fw-title-2);">Section title
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>--fs-title-3</code></td>
+                                <td>20</td>
+                                <td style="font-size: var(--fs-title-3); font-weight: var(--fw-title-3);">Card title
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>--fs-subtitle</code></td>
+                                <td>20</td>
+                                <td style="font-size: var(--fs-subtitle); font-weight: var(--fw-subtitle);">Subtitle
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>--fs-headline</code></td>
+                                <td>17</td>
+                                <td style="font-size: var(--fs-headline); font-weight: var(--fw-headline);">Button label
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>--fs-body</code></td>
+                                <td>17</td>
+                                <td style="font-size: var(--fs-body); font-weight: var(--fw-body);">Body copy</td>
+                            </tr>
+                            <tr>
+                                <td><code>--fs-callout</code></td>
+                                <td>16</td>
+                                <td style="font-size: var(--fs-callout); font-weight: var(--fw-callout);">Callout</td>
+                            </tr>
+                            <tr>
+                                <td><code>--fs-caption</code></td>
+                                <td>14</td>
+                                <td style="font-size: var(--fs-caption); font-weight: var(--fw-caption);">Caption</td>
+                            </tr>
+                            <tr>
+                                <td><code>--fs-footnote</code></td>
+                                <td>13</td>
+                                <td style="font-size: var(--fs-footnote); font-weight: var(--fw-footnote);">Footnote
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>--fs-caption-2</code></td>
+                                <td>12</td>
+                                <td style="font-size: var(--fs-caption-2); font-weight: var(--fw-caption-2);">Timestamp
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>--fs-label</code></td>
+                                <td>11</td>
+                                <td style="font-size: var(--fs-label); font-weight: var(--fw-label);">TAB LABEL</td>
+                            </tr>
+                            <tr>
+                                <td><code>--fs-micro</code></td>
+                                <td>10</td>
+                                <td style="font-size: var(--fs-micro); font-weight: var(--fw-micro);">BADGE</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="spec">
+                    <h2>Spacing</h2>
+                    <p class="note">
+                        A 4pt grid, eight steps, from <code>ReminSpacing</code>. Values off the scale (9, 18, 95…) are
+                        not allowed. The site adds its own larger rhythm above 32px — see the
+                        <code>--site-*</code> layer.
+                    </p>
+                    <table class="spec-table">
+                        <thead>
+                            <tr>
+                                <th>Token</th>
+                                <th>Value</th>
+                                <th>Use</th>
+                                <th style="width: 40%;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>--s-xxs</code></td>
+                                <td>2</td>
+                                <td>icon-to-label minimum</td>
+                                <td><span class="bar" style="width: var(--s-xxs);"></span></td>
+                            </tr>
+                            <tr>
+                                <td><code>--s-xs</code></td>
+                                <td>4</td>
+                                <td>inside a badge</td>
+                                <td><span class="bar" style="width: var(--s-xs);"></span></td>
+                            </tr>
+                            <tr>
+                                <td><code>--s-sm</code></td>
+                                <td>8</td>
+                                <td>within a related group</td>
+                                <td><span class="bar" style="width: var(--s-sm);"></span></td>
+                            </tr>
+                            <tr>
+                                <td><code>--s-md</code></td>
+                                <td>12</td>
+                                <td>default gap inside a card</td>
+                                <td><span class="bar" style="width: var(--s-md);"></span></td>
+                            </tr>
+                            <tr>
+                                <td><code>--s-lg</code></td>
+                                <td>16</td>
+                                <td>screen edge, section inset</td>
+                                <td><span class="bar" style="width: var(--s-lg);"></span></td>
+                            </tr>
+                            <tr>
+                                <td><code>--s-xl</code></td>
+                                <td>20</td>
+                                <td>generous card padding</td>
+                                <td><span class="bar" style="width: var(--s-xl);"></span></td>
+                            </tr>
+                            <tr>
+                                <td><code>--s-xxl</code></td>
+                                <td>24</td>
+                                <td>between sections</td>
+                                <td><span class="bar" style="width: var(--s-xxl);"></span></td>
+                            </tr>
+                            <tr>
+                                <td><code>--s-xxxl</code></td>
+                                <td>32</td>
+                                <td>major separation</td>
+                                <td><span class="bar" style="width: var(--s-xxxl);"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="spec">
+                    <h2>Radius</h2>
+                    <p class="note">
+                        Six steps and a pill, from <code>ReminRadius</code>. Adding a seventh is not a small decision —
+                        snap to the nearest instead. Capsules use <code>--r-pill</code>.
+                    </p>
+                    <table class="spec-table">
+                        <thead>
+                            <tr>
+                                <th>Token</th>
+                                <th>Value</th>
+                                <th>Use</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>--r-xs</code></td>
+                                <td>4</td>
+                                <td>inline tag, mini badge</td>
+                                <td>
+                                    <div class="radius-demo" style="border-radius: var(--r-xs);"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>--r-sm</code></td>
+                                <td>8</td>
+                                <td>chip, thumbnail</td>
+                                <td>
+                                    <div class="radius-demo" style="border-radius: var(--r-sm);"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>--r-md</code></td>
+                                <td>12</td>
+                                <td>button, row, input</td>
+                                <td>
+                                    <div class="radius-demo" style="border-radius: var(--r-md);"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>--r-lg</code></td>
+                                <td>16</td>
+                                <td>card, sheet container</td>
+                                <td>
+                                    <div class="radius-demo" style="border-radius: var(--r-lg);"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>--r-xl</code></td>
+                                <td>20</td>
+                                <td>floating bar, large card</td>
+                                <td>
+                                    <div class="radius-demo" style="border-radius: var(--r-xl);"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>--r-xxl</code></td>
+                                <td>24</td>
+                                <td>modal, overlay container</td>
+                                <td>
+                                    <div class="radius-demo" style="border-radius: var(--r-xxl);"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>--r-pill</code></td>
+                                <td>999</td>
+                                <td>capsule</td>
+                                <td>
+                                    <div class="radius-demo" style="border-radius: var(--r-pill);"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="spec">
+                    <h2>Shadow</h2>
+                    <p class="note">
+                        Four presets from <code>.reminShadow(_:)</code>. <code>--sh-floating</code> is two layers with a
+                        brand tint; <code>--sh-brand</code> is the gradient button's glow. Ad-hoc shadows are not a
+                        thing.
+                    </p>
+                    <div class="shadow-stage">
+                        <div class="shadow-demo" style="box-shadow: var(--sh-subtle);">--sh-subtle</div>
+                        <div class="shadow-demo" style="box-shadow: var(--sh-card);">--sh-card</div>
+                        <div class="shadow-demo" style="box-shadow: var(--sh-floating);">--sh-floating</div>
+                        <div class="shadow-demo" style="box-shadow: var(--sh-brand);">--sh-brand</div>
+                    </div>
+                </div>
+
+                <div class="spec">
+                    <h2>Voice &amp; emotion tags</h2>
+                    <p class="note">
+                        Remin speaks about moments, not files. The app's Korean brand phrases —
+                        담아온 순간 (moments you kept), 마음에 남은 장면 (scenes that stayed with you),
+                        걸었던 길 (the path you walked) — set the tone that the English and Japanese copy follows.
+                        Eight emotion tags are fixed:
+                    </p>
+                    <div class="emotion-row">
+                        <span class="emotion-tag">😊 Joyful</span>
+                        <span class="emotion-tag">🍃 Peaceful</span>
+                        <span class="emotion-tag">✨ Excited</span>
+                        <span class="emotion-tag">💭 Nostalgic</span>
+                        <span class="emotion-tag">💖 Touching</span>
+                        <span class="emotion-tag">🌍 Adventurous</span>
+                        <span class="emotion-tag">☁️ Comfortable</span>
+                        <span class="emotion-tag">😲 Amazing</span>
+                    </div>
+                </div>
+
+                <div class="spec">
+                    <h2>Deliberately not exported</h2>
+                    <p class="note">
+                        Some app tokens have no honest web equivalent. They stay in Swift, and
+                        <code>tokens.css</code> records why.
+                    </p>
+                    <table class="spec-table">
+                        <thead>
+                            <tr>
+                                <th>App token</th>
+                                <th>Why it stops at the app</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>adaptiveText</code>, <code>adaptiveBackground</code>, …</td>
+                                <td>Derived from UIKit dynamic colors; no static CSS equivalent, and the site is
+                                    dark-only.</td>
+                            </tr>
+                            <tr>
+                                <td><code>overlayText</code>, <code>overlayBackground</code></td>
+                                <td>Fixed white/black for text over photos. The site has no photo-overlay UI.</td>
+                            </tr>
+                            <tr>
+                                <td><code>design: .rounded</code></td>
+                                <td>SF Pro Rounded isn't shipped as a web font. Inter / Noto Sans stand in.</td>
+                            </tr>
+                            <tr>
+                                <td>Dynamic Type scaling</td>
+                                <td>The web handles this with relative units and media queries instead.</td>
+                            </tr>
+                            <tr>
+                                <td>Liquid Glass materials</td>
+                                <td><code>backdrop-filter</code> approximates it; the <code>--site-glass-*</code> layer
+                                    owns those values.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Remin</div>
+                <p>&copy; 2025–2026 Remin Team. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="support.html">Support</a>
+                    <a href="system.html">Design System</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

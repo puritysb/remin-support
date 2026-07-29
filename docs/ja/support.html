@@ -15,6 +15,8 @@
     <link rel="alternate" hreflang="x-default" href="https://puritysb.github.io/remin-support/support.html">
 
     <link rel="icon" type="image/png" href="../app-icon.png">
+    <!-- tokens.css 먼저 (Swift 정본에서 생성) → style.css 가 그 토큰을 참조 -->
+    <link rel="stylesheet" href="../tokens.css">
     <link rel="stylesheet" href="../style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
@@ -32,6 +34,7 @@
                 Remin
             </a>
             <div class="nav-links">
+                <a href="../system.html" class="download-btn small desktop-only">デザイン</a>
                 <a href="privacy.html" class="download-btn small">プライバシーポリシー</a>
                 <!-- Language Switcher -->
                 <div class="lang-switcher">
@@ -42,8 +45,8 @@
                         </svg>
                     </button>
                     <div class="lang-dropdown">
-                        <a href="../" class="lang-option" data-lang="en">English</a>
-                        <a href="../ko/" class="lang-option" data-lang="ko">한국어</a>
+                        <a href="../support.html" class="lang-option" data-lang="en">English</a>
+                        <a href="../ko/support.html" class="lang-option" data-lang="ko">한국어</a>
                         <a href="./" class="lang-option" data-lang="ja">日本語</a>
                     </div>
                 </div>
@@ -62,6 +65,11 @@
                     <li><strong>写真が表示されない</strong>：iOS設定→プライバシーとセキュリティ→写真→Reminで写真アクセス権限を許可してください。</li>
                     <li><strong>分析に時間がかかる</strong>：写真の数（数百〜数千枚）、iCloudダウンロード状況、デバイス性能によって時間が異なる場合があります。</li>
                     <li><strong>バックグラウンドで止まっているようだ</strong>：アプリを再度開いて進行状況を確認してください。iOSは状況に応じてバックグラウンド処理を制限する場合があります。</li>
+                    <li><strong>Apple Watchの機能はどこですか？</strong>：iPhoneのWatchアプリからReminをウォッチにインストールしてください。瞬間の保存、ボイスメモ、場所のショートカットは、両方のデバイスが近くにあるときにiPhoneへ同期されます。</li>
+                    <li><strong>場所のショートカットに何も表示されない</strong>：登録したアドレスがHTTPSでアクセスでき、そのページにコードがまだあるかご確認ください。取得に失敗した場合、Reminは最後に読み取れたコードを表示し続けます。</li>
+                    <li><strong>旅ストーリーが提案されない</strong>：AIストーリーはApple Intelligence対応デバイスで、iOS設定で有効になっているときに動作します。他の機能はなくてもすべて正常に動作します。</li>
+                    <li><strong>ボイスメモが文字にならない</strong>：変換はすべてデバイス内で行うため、その言語のデバイス内音声モデルが必要です。代わりにサーバーへ音声を送ることはなく、録音自体は残り再生できます。</li>
+                    <li><strong>動画生成が失敗する・おかしい</strong>：長いクリップはテンポのため各5秒程度にトリミングされます。書き出しが失敗する場合は写真を減らして再試行してください。書き出しはデバイス上で行うため空き容量が必要です。</li>
                 </ul>
 
                 <h2>お問い合わせ</h2>
@@ -80,7 +88,7 @@
                 </ul>
 
                 <h2>プライバシー</h2>
-                <p>Reminはアプリ機能の提供のために写真にアクセスしますが、自社サーバーに写真をアップロードしません。詳細は
+                <p>Reminは写真をデバイス内で分析し、アップロードしません。ネットワークを使う唯一の例外は、お客様自身が登録した場所のショートカットのアドレスをiPhoneが取得してコードを読み取る場合で、写真・位置情報・分析データは含まれません。詳細は
                     <a href="privacy.html">プライバシーポリシー</a>をご参照ください。</p>
             </div>
         </div>
@@ -90,10 +98,11 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">Remin</div>
-                <p>&copy; 2025 Remin Team. All rights reserved.</p>
+                <p>&copy; 2025–2026 Remin Team. All rights reserved.</p>
                 <div class="footer-links">
                     <a href="privacy.html">プライバシーポリシー</a>
                     <a href="support.html">サポート</a>
+                    <a href="../system.html">デザインシステム</a>
                 </div>
             </div>
         </div>

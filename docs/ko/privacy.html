@@ -15,6 +15,8 @@
     <link rel="alternate" hreflang="x-default" href="https://puritysb.github.io/remin-support/privacy.html">
 
     <link rel="icon" type="image/png" href="../app-icon.png">
+    <!-- tokens.css 먼저 (Swift 정본에서 생성) → style.css 가 그 토큰을 참조 -->
+    <link rel="stylesheet" href="../tokens.css">
     <link rel="stylesheet" href="../style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+KR:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
@@ -32,6 +34,7 @@
                 Remin
             </a>
             <div class="nav-links">
+                <a href="../system.html" class="download-btn small desktop-only">디자인</a>
                 <a href="support.html" class="download-btn small">지원</a>
                 <!-- Language Switcher -->
                 <div class="lang-switcher">
@@ -42,9 +45,9 @@
                         </svg>
                     </button>
                     <div class="lang-dropdown">
-                        <a href="../" class="lang-option" data-lang="en">English</a>
+                        <a href="../privacy.html" class="lang-option" data-lang="en">English</a>
                         <a href="./" class="lang-option" data-lang="ko">한국어</a>
-                        <a href="../ja/" class="lang-option" data-lang="ja">日本語</a>
+                        <a href="../ja/privacy.html" class="lang-option" data-lang="ja">日本語</a>
                     </div>
                 </div>
             </div>
@@ -55,42 +58,56 @@
         <div class="container">
             <div class="page-card">
                 <h1>개인정보처리방침</h1>
-                <p>최종 업데이트: 2025-12-13</p>
+                <p>최종 업데이트: 2026-07-30</p>
 
                 <h2>요약</h2>
                 <ul>
                     <li>Remin은 사진/동영상 분석을 위해 기기의 "사진" 접근 권한을 요청합니다.</li>
-                    <li>분석은 가능한 범위에서 기기 내(on-device)에서 수행되도록 설계되어 있습니다.</li>
+                    <li>클러스터링, 품질 평가, 검색 색인, AI 여행 스토리까지 모든 분석은 기기 안에서 수행됩니다. 사진과 동영상은 저희에게 전송되지 않습니다.</li>
                     <li>Remin은 광고/트래킹 SDK를 포함하지 않으며, 제3자에게 데이터를 판매하지 않습니다.</li>
+                    <li>외부로 요청을 보내는 기능은 단 하나이며, 그것도 사용자가 직접 입력한 주소로만 갑니다. <a href="#network">네트워크 사용</a>에서 설명합니다.</li>
                 </ul>
 
-                <h2>수집/이용하는 정보</h2>
-                <p>Remin은 앱 기능 제공을 위해 다음 데이터를 기기에서 접근할 수 있습니다.</p>
+                <h2>접근하는 정보</h2>
+                <p>Remin은 앱 기능 제공을 위해 기기에서 다음에 접근할 수 있습니다.</p>
                 <ul>
-                    <li>사진/동영상 및 메타데이터(촬영 시각, 위치가 포함된 경우 위치 정보 등): 여행 사진 큐레이션, 검색, 콘텐츠 생성 기능 제공 목적</li>
+                    <li><strong>사진/동영상 및 메타데이터</strong>(촬영 시각, 포함된 경우 위치): 여행 사진 큐레이션, 검색, 콘텐츠 생성</li>
+                    <li><strong>현재 위치</strong>: Apple Watch에서 순간이나 장소를 담을 때 기록하며, 장소 바로가기가 적용되는 지점을 보여주는 데 사용합니다</li>
+                    <li><strong>마이크 오디오</strong>: Apple Watch에서 음성 메모를 녹음하는 동안에만</li>
                 </ul>
 
                 <h2>저장</h2>
-                <p>Remin은 앱 동작을 위해 기기 내에 분석 결과/설정을 저장할 수 있습니다(예: 로컬 데이터베이스, 캐시).</p>
+                <p>Remin은 앱 동작을 위해 분석 결과, 설정, 음성 메모 녹음과 변환된 텍스트를 기기 내(로컬 데이터베이스·캐시)에 저장합니다.</p>
 
-                <h2>전송(서버)</h2>
-                <p>Remin은 자체 서버로 사진/동영상을 업로드하지 않습니다.</p>
-                <p>다만 사용자의 iCloud 사진 보관함을 사용하는 경우, 사진이 기기에 내려받아지는 과정은 iOS 시스템(Apple 서비스)에 의해 네트워크를 사용할 수 있습니다.</p>
+                <h2>기기 내 처리</h2>
+                <ul>
+                    <li>사진 클러스터링, 품질 평가, 시각 유사도, 검색 색인은 Apple의 Vision·Core ML 프레임워크로 기기에서 계산합니다.</li>
+                    <li>여행 스토리, 세션 이름, 시맨틱 태그는 지원 기기에서 Apple Intelligence의 기기 내 파운데이션 모델이 생성합니다. 프롬프트나 사진이 서버로 가지 않습니다.</li>
+                    <li>음성 메모는 Apple의 기기 내 음성 인식으로 변환합니다. Remin은 기기 내 인식을 명시적으로 요구하므로, 해당 언어의 기기 내 모델이 없으면 서버로 보내는 대신 변환을 포기합니다.</li>
+                </ul>
+
+                <h2 id="network">네트워크 사용</h2>
+                <p>Remin에는 자체 서버가 없습니다. 사진, 동영상, 위치, 음성 메모, 분석 결과는 어디로도 전송되지 않습니다.</p>
+                <p><strong>장소 바로가기(선택).</strong> 장소에 웹 페이지나 이미지 주소를 등록하면, iPhone이 그 주소를 HTTPS로 받아와 담긴 코드를 읽어 Apple Watch가 도착할 때 보여줄 수 있게 합니다. 요청은 사용자가 입력한 호스트로만 갑니다. 모든 웹 요청과 마찬가지로 그 사이트 운영자는 접속 IP와 요청 시각을 볼 수 있으며, 사진·위치·분석 결과에 관한 정보는 어떤 것도 포함되지 않습니다. Apple Watch 자체는 네트워크를 사용하지 않습니다 — 완성된 코드를 iPhone이 넘겨줍니다. 주소를 등록하지 않으면 Remin은 외부로 어떤 요청도 보내지 않습니다.</p>
+                <p>이와 별개로, iCloud 사진 보관함을 사용하는 경우 사진이 기기로 내려받아지는 과정은 iOS 시스템(Apple 서비스)이 관리하는 네트워크를 사용할 수 있습니다.</p>
 
                 <h2>추적</h2>
-                <p>Remin은 사용자를 추적하지 않습니다.</p>
+                <p>Remin은 사용자를 추적하지 않습니다. 분석 SDK, 광고 식별자, 저희에게 보고되는 크래시 리포터가 모두 없습니다.</p>
 
                 <h2>권한</h2>
                 <ul>
-                    <li>사진 접근 권한: 사진 선택/분석/앨범 생성 기능 제공 목적</li>
-                    <li>(선택) 위치 권한: 지도/경로 표시 등의 기능이 활성화된 경우에만 사용될 수 있습니다</li>
+                    <li><strong>사진 접근</strong>: 사진 선택·분석·앨범 생성</li>
+                    <li><strong>위치(사용 중)</strong>: 순간과 장소를 담은 위치 기록, 현재 위치에 맞는 장소 바로가기 표시</li>
+                    <li><strong>마이크</strong>: Apple Watch 음성 메모 녹음</li>
+                    <li><strong>음성 인식</strong>: 그 음성 메모를 기기 안에서 텍스트로 변환</li>
                 </ul>
+                <p>사진 접근을 제외한 모든 권한은 선택이며, 허용하지 않아도 나머지 기능은 그대로 동작합니다.</p>
 
                 <h2>데이터 삭제</h2>
-                <p>앱을 삭제하면 기기에 저장된 Remin의 로컬 데이터는 함께 제거됩니다. (단, 원본 사진/앨범은 사용자가 Photos 앱에서 관리합니다.)</p>
+                <p>앱을 삭제하면 음성 메모 녹음과 변환 텍스트를 포함한 Remin의 로컬 데이터가 함께 제거됩니다. (원본 사진과 앨범은 사용자가 Photos 앱에서 관리합니다.)</p>
 
                 <h2>문의</h2>
-                <p>문의/지원은 <a href="support.html">지원 및 문의</a> 페이지를 참고해주세요.</p>
+                <p>문의와 지원은 <a href="support.html">지원 및 문의</a> 페이지를 참고해주세요.</p>
             </div>
         </div>
     </section>
@@ -99,10 +116,11 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">Remin</div>
-                <p>&copy; 2025 Remin Team. All rights reserved.</p>
+                <p>&copy; 2025–2026 Remin Team. All rights reserved.</p>
                 <div class="footer-links">
                     <a href="privacy.html">개인정보처리방침</a>
                     <a href="support.html">지원 및 문의</a>
+                    <a href="../system.html">디자인 시스템</a>
                 </div>
             </div>
         </div>
