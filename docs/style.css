@@ -319,10 +319,16 @@ html[lang="ja"] body {
 .screenshot-grid img {
     width: 100%;
     height: auto;
+    aspect-ratio: 1290 / 2796;
+    object-fit: cover;
+    background: var(--site-glass-bg);
     border-radius: var(--r-md);
     border: 1px solid var(--site-glass-border);
     box-shadow: var(--site-sh-image);
     transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.js .screenshot-grid img {
     opacity: 0;
     transform: translateY(20px);
 }
@@ -563,7 +569,11 @@ footer {
 .ipad-gallery img {
     flex-shrink: 0;
     max-width: 500px;
+    width: 100%;
     height: auto;
+    aspect-ratio: 2048 / 2732;
+    object-fit: cover;
+    background: var(--site-glass-bg);
     border-radius: var(--r-lg);
     border: 1px solid var(--site-glass-border);
     box-shadow: var(--site-sh-showcase);
@@ -640,6 +650,9 @@ footer {
     border-radius: var(--r-xl);
     padding: var(--s-xl);
     transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.js .feature-card {
     opacity: 0;
     transform: translateY(20px);
 }
@@ -658,6 +671,9 @@ footer {
 .feature-card img {
     width: 140px;
     height: auto;
+    aspect-ratio: 1290 / 2796;
+    object-fit: cover;
+    background: var(--site-glass-bg);
     border-radius: var(--r-lg);
     box-shadow: var(--site-sh-thumb);
     flex-shrink: 0;

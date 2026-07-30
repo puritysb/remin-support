@@ -28,6 +28,9 @@
     <link rel="icon" type="image/png" href="app-icon.png">
 
     <!-- CSS -->
+    <!-- 스크롤 페이드인은 JS 가 살아있을 때만 건다. CSS 로 숨겨두면 스크립트가
+         막혔을 때 이미지가 영영 나타나지 않는다. -->
+    <script>document.documentElement.classList.add('js')</script>
     <!-- tokens.css 먼저 (Swift 정본에서 생성) → style.css 가 그 토큰을 참조 -->
     <link rel="stylesheet" href="tokens.css">
     <link rel="stylesheet" href="style.css">
